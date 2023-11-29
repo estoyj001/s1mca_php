@@ -8,7 +8,7 @@
         <h2> Register </h2>
     <form method="POST" action="">
         NAME : <input type="text" name="naeem"> <br> <br>
-         USERNAME :   <input type="text" name="email"> <br> <br>
+         USERNAME :   <input type="text" name="mail"> <br> <br>
          PASSWORD :   <input type="password" name="pswd"> <br> <br>
             <input type="submit" name="submit" value="submit"> <br> <br>
             <a href="loginform.php"> Already Signed Up? </a>
@@ -17,12 +17,13 @@
     <?php
 $con = mysqli_connect('localhost','root','cetmca','junaid');
 
-$u = $_POST['email'];
+
+if(isset($_POST['submit'])){
+$u = $_POST['mail'];
 $p = $_POST['pswd'];
 $n = $_POST['naeem'];
-$qry = "INSERT INTO student('$n','$u','$p')";
+$qry = "INSERT INTO student values('$n','$u','$p')";
 $sql = mysqli_query($con,$qry);
-if(isset($_POST['submit'])){
 if($sql){
     echo "Registration Successful";
     
@@ -30,6 +31,6 @@ if($sql){
 else{
     echo "Registration Failed";
 }
-}
 
+}
 ?>
